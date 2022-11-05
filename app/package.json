@@ -1,0 +1,38 @@
+{
+    "name": "idlemilk",
+    "version": "1.0.0",
+    "description": "application",
+    "author": {
+        "email": "admin@dev.lan",
+        "name": "admin",
+        "url": "https://idlemilk.dev.lan"
+    },
+    "engines": {
+        "node": ">=19.0.0"
+    },
+    "private": true,
+    "scripts": {
+        "start": "concurrently -n \"WEBPACK,GUNICORN\" -c \"bgCyan.bold,bgMagenta.bold\" \"npm run watch\" \"npm run server\"",
+        "build": "webpack --mode=production --optimization-minimize --color --progress",
+        "watch": "webpack --mode=development --stats-children --watch",
+        "server": "gunicorn -k eventlet -b 0.0.0.0:5000 --reload 'app:create_app()'"
+    },
+    "dependencies": {
+        "@popperjs/core": "2.11.6",
+        "bootstrap": "5.2.2",
+        "jquery": "3.6.1",
+        "line-awesome": "1.3.0"
+    },
+    "devDependencies": {
+        "@babel/core": "7.19.6",
+        "@babel/preset-env": "7.19.4",
+        "babel-loader": "9.0.0",
+        "concurrently": "7.5.0",
+        "css-loader": "6.7.1",
+        "mini-css-extract-plugin": "2.6.1",
+        "sass-loader": "13.1.0",
+        "sass": "1.55.0",
+        "webpack": "5.74.0",
+        "webpack-cli": "4.10.0"
+    }
+}
